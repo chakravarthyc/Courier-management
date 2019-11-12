@@ -1,0 +1,66 @@
+﻿@model courierf.Models.Booking
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch.Branch_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch.Branch_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Customer_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Customer_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff.Staff_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff.Staff_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.From_add)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.From_add)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Booking_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
