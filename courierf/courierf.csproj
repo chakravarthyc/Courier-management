@@ -178,17 +178,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911101810181_courierf-v1.cs" />
-    <Compile Include="Migrations\201911101810181_courierf-v1.Designer.cs">
-      <DependentUpon>201911101810181_courierf-v1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911101842494_Role.cs" />
-    <Compile Include="Migrations\201911101842494_Role.Designer.cs">
-      <DependentUpon>201911101842494_Role.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911101902329_Rolegon.cs" />
-    <Compile Include="Migrations\201911101902329_Rolegon.Designer.cs">
-      <DependentUpon>201911101902329_Rolegon.cs</DependentUpon>
+    <Compile Include="Migrations\201911141606208_v1.cs" />
+    <Compile Include="Migrations\201911141606208_v1.Designer.cs">
+      <DependentUpon>201911141606208_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -212,6 +204,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Cyborg.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -304,14 +297,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911101810181_courierf-v1.resx">
-      <DependentUpon>201911101810181_courierf-v1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911101842494_Role.resx">
-      <DependentUpon>201911101842494_Role.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911101902329_Rolegon.resx">
-      <DependentUpon>201911101902329_Rolegon.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911141606208_v1.resx">
+      <DependentUpon>201911141606208_v1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,6 +17,7 @@ namespace courierf.Models
 
         [Key]
         [StringLength(250)]
+        [Display(Name ="Branch")]
         public string Branch_code { get; set; }
 
         public int? Branch_pin { get; set; }

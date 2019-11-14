@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -20,6 +21,11 @@ namespace courierf.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<Branch> Branches { get; set; }
+        public virtual DbSet<Courier> Couriers { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+
         public ApplicationDbContext()
             : base("CourierModel", throwIfV1Schema: false)
         {
