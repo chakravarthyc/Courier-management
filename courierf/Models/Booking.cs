@@ -10,9 +10,7 @@ namespace courierf.Models
     public partial class Booking
     {
         [Key]
-        [StringLength(250)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Booking_id { get; set; }
+        public int Booking_id { get; set; }
 
         [StringLength(250)]
         public string From_add { get; set; }
@@ -31,6 +29,5 @@ namespace courierf.Models
         public virtual Branch Branch { get; set; }
 
         public virtual Customer Customer { get; set; }
-
     }
 }

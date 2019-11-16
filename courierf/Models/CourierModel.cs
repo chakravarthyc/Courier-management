@@ -12,12 +12,11 @@ namespace courierf.Models
         {
         }
 
-        public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-        public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
         public virtual DbSet<Booking> Bookings { get; set; }
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<Courier> Couriers { get; set; }
@@ -25,11 +24,6 @@ namespace courierf.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AspNetRole>()
-                .HasMany(e => e.AspNetRoleClaims)
-                .WithRequired(e => e.AspNetRole)
-                .HasForeignKey(e => e.RoleId);
-
             modelBuilder.Entity<AspNetRole>()
                 .HasMany(e => e.AspNetUsers)
                 .WithMany(e => e.AspNetRoles)
@@ -44,15 +38,6 @@ namespace courierf.Models
                 .HasMany(e => e.AspNetUserLogins)
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.UserId);
-
-            modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.AspNetUserTokens)
-                .WithRequired(e => e.AspNetUser)
-                .HasForeignKey(e => e.UserId);
-
-            modelBuilder.Entity<Booking>()
-                .Property(e => e.Booking_id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

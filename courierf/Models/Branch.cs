@@ -17,7 +17,6 @@ namespace courierf.Models
 
         [Key]
         [StringLength(250)]
-        [Display(Name ="Branch")]
         public string Branch_code { get; set; }
 
         public int? Branch_pin { get; set; }
@@ -30,6 +29,5 @@ namespace courierf.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }
-
     }
 }

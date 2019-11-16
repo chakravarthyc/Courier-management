@@ -13,15 +13,16 @@ namespace courierf.Controllers
     public class CouriersController : Controller
     {
         private CourierModel db = new CourierModel();
-
+        int bid;
         // GET: Couriers
         public ActionResult Index()
         {
-            return View(db.Couriers.ToList());
+            var couriers = db.Couriers;
+            return View(couriers.ToList());
         }
 
         // GET: Couriers/Details/5
-        public ActionResult Details(long? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -38,6 +39,7 @@ namespace courierf.Controllers
         // GET: Couriers/Create
         public ActionResult Create()
         {
+            ViewBag.Courier_id = new SelectList(db.Bookings, "Booking_id", "From_add");
             return View();
         }
 
@@ -50,16 +52,19 @@ namespace courierf.Controllers
         {
             if (ModelState.IsValid)
             {
+                courier.Courier_id = (int)TempData["booking"];
                 db.Couriers.Add(courier);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Bookings");
             }
-
-            return View(courier);
+            else
+            {
+                return Content("Invalid model");
+            }
         }
 
         // GET: Couriers/Edit/5
-        public ActionResult Edit(long? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -70,6 +75,7 @@ namespace courierf.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Courier_id = new SelectList(db.Bookings, "Booking_id", "From_add", courier.Courier_id);
             return View(courier);
         }
 
@@ -86,11 +92,12 @@ namespace courierf.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Courier_id = new SelectList(db.Bookings, "Booking_id", "From_add", courier.Courier_id);
             return View(courier);
         }
 
         // GET: Couriers/Delete/5
-        public ActionResult Delete(long? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -107,7 +114,7 @@ namespace courierf.Controllers
         // POST: Couriers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Courier courier = db.Couriers.Find(id);
             db.Couriers.Remove(courier);

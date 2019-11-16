@@ -1,4 +1,4 @@
-﻿@model courierf.Models.Booking
+﻿@model courierf.Models.BookingDetails
 
 @{
     ViewBag.Title = "Details";
@@ -11,56 +11,65 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Branch.Branch_address)
+            @Html.DisplayNameFor(model => model.booking.Branch.Branch_address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Branch.Branch_address)
+            @Html.DisplayFor(model => model.booking.Branch.Branch_address)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Customer.Customer_name)
+            @Html.DisplayNameFor(model => model.booking.Customer.Customer_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Customer.Customer_name)
+            @Html.DisplayFor(model => model.booking.Customer.Customer_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Staff.Staff_name)
+            @Html.DisplayNameFor(model => model.booking.From_add)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Staff.Staff_name)
+            @Html.DisplayFor(model => model.booking.From_add)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.From_add)
+            @Html.DisplayNameFor(model => model.booking.Amount)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.From_add)
+            @Html.DisplayFor(model => model.booking.Amount)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Amount)
+            @Html.DisplayNameFor(model => model.booking.Destination)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Amount)
+            @Html.DisplayFor(model => model.booking.Destination)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Destination)
+            @Html.DisplayNameFor(model => model.courier.Weight)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Destination)
+            @Html.DisplayFor(model => model.courier.Weight)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.courier.Courier_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.courier.Courier_type)
+        </dd>
+
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Booking_id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.booking.Booking_id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

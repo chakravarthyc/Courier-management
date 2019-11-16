@@ -17,8 +17,7 @@ namespace courierf.Controllers
         // GET: Branches
         public ActionResult Index()
         {
-            var branches = db.Branches;
-            return View(branches.ToList());
+            return View(db.Branches.ToList());
         }
 
         // GET: Branches/Details/5
@@ -39,7 +38,6 @@ namespace courierf.Controllers
         // GET: Branches/Create
         public ActionResult Create()
         {
-            ViewBag.Courier_id = new SelectList(db.Couriers, "Courier_id", "Courier_type");
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace courierf.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Branch_code,Branch_pin,Branch_address,Branch_name,Courier_id")] Branch branch)
+        public ActionResult Create([Bind(Include = "Branch_code,Branch_pin,Branch_address,Branch_name")] Branch branch)
         {
             if (ModelState.IsValid)
             {
@@ -56,8 +54,6 @@ namespace courierf.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.Courier_id = new SelectList(db.Couriers, "Courier_id", "Courier_type");
             return View(branch);
         }
 
@@ -73,7 +69,6 @@ namespace courierf.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Courier_id = new SelectList(db.Couriers, "Courier_id", "Courier_type");
             return View(branch);
         }
 
@@ -82,7 +77,7 @@ namespace courierf.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Branch_code,Branch_pin,Branch_address,Branch_name,Courier_id")] Branch branch)
+        public ActionResult Edit([Bind(Include = "Branch_code,Branch_pin,Branch_address,Branch_name")] Branch branch)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +85,6 @@ namespace courierf.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Courier_id = new SelectList(db.Couriers, "Courier_id", "Courier_type");
             return View(branch);
         }
 

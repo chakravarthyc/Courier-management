@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Booking.From_add)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Weight)
         </th>
         <th>
@@ -22,6 +25,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Booking.From_add)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Weight)
         </td>

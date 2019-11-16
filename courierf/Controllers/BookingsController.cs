@@ -23,24 +23,29 @@ namespace courierf.Controllers
         }
 
         // GET: Bookings/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Booking booking = db.Bookings.Find(id);
+            Courier courier = db.Couriers.Find(id);
+            BookingDetails bd = new BookingDetails();
+            bd.booking = booking;
+            bd.courier = courier;
             if (booking == null)
             {
                 return HttpNotFound();
             }
-            return View(booking);
+            return View(bd);
         }
 
         // GET: Bookings/Create
         public ActionResult Create()
         {
             ViewBag.Branch_code = new SelectList(db.Branches, "Branch_code", "Branch_address");
+            ViewBag.Booking_id = new SelectList(db.Couriers, "Courier_id", "Courier_type");
             ViewBag.Customer_id = new SelectList(db.Customers, "Customer_id", "Customer_name");
             return View();
         }
@@ -50,22 +55,24 @@ namespace courierf.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Booking_id,From_add,Amount,Destination,Branch_code,,Customer_id")] Booking booking)
+        public ActionResult Create([Bind(Include = "Booking_id,From_add,Amount,Destination,Branch_code,Customer_id")] Booking booking)
         {
             if (ModelState.IsValid)
             {
                 db.Bookings.Add(booking);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["courier_id"] = booking.Booking_id;
+                return RedirectToAction("Create","Couriers");
             }
 
             ViewBag.Branch_code = new SelectList(db.Branches, "Branch_code", "Branch_address", booking.Branch_code);
+            ViewBag.Booking_id = new SelectList(db.Couriers, "Courier_id", "Courier_type", booking.Booking_id);
             ViewBag.Customer_id = new SelectList(db.Customers, "Customer_id", "Customer_name", booking.Customer_id);
             return View(booking);
         }
 
         // GET: Bookings/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -77,6 +84,7 @@ namespace courierf.Controllers
                 return HttpNotFound();
             }
             ViewBag.Branch_code = new SelectList(db.Branches, "Branch_code", "Branch_address", booking.Branch_code);
+            ViewBag.Booking_id = new SelectList(db.Couriers, "Courier_id", "Courier_type", booking.Booking_id);
             ViewBag.Customer_id = new SelectList(db.Customers, "Customer_id", "Customer_name", booking.Customer_id);
             return View(booking);
         }
@@ -86,7 +94,7 @@ namespace courierf.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Booking_id,From_add,Amount,Destination,Branch_code,,Customer_id")] Booking booking)
+        public ActionResult Edit([Bind(Include = "Booking_id,From_add,Amount,Destination,Branch_code,Customer_id")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -95,12 +103,13 @@ namespace courierf.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Branch_code = new SelectList(db.Branches, "Branch_code", "Branch_address", booking.Branch_code);
+            ViewBag.Booking_id = new SelectList(db.Couriers, "Courier_id", "Courier_type", booking.Booking_id);
             ViewBag.Customer_id = new SelectList(db.Customers, "Customer_id", "Customer_name", booking.Customer_id);
             return View(booking);
         }
 
         // GET: Bookings/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -117,14 +126,13 @@ namespace courierf.Controllers
         // POST: Bookings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Booking booking = db.Bookings.Find(id);
             db.Bookings.Remove(booking);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         public ActionResult BookCourier()
         {
             ViewBag.Branch_code = new SelectList(db.Branches, "Branch_code", "Branch_address");
@@ -144,15 +152,14 @@ namespace courierf.Controllers
             {
                 db.Bookings.Add(booking);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["booking"] = booking.Booking_id;
+                return RedirectToAction("Create", "Couriers");
             }
 
             ViewBag.Branch_code = new SelectList(db.Branches, "Branch_code", "Branch_address", booking.Branch_code);
             ViewBag.Customer_id = new SelectList(db.Customers, "Customer_id", "Customer_name", booking.Customer_id);
             return View(booking);
         }
-
-
 
         protected override void Dispose(bool disposing)
         {

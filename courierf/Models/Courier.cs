@@ -9,22 +9,13 @@ namespace courierf.Models
     [Table("Courier")]
     public partial class Courier
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Courier()
-        {
-            Branches = new HashSet<Branch>();
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long Courier_id { get; set; }
+        public int Courier_id { get; set; }
 
         public int? Weight { get; set; }
 
         [StringLength(25)]
         public string Courier_type { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Branch> Branches { get; set; }
     }
 }

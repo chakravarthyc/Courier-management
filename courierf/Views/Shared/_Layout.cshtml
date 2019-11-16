@@ -31,7 +31,8 @@
                     }
                     @if (User.IsInRole("BranchManager"))
                     {
-
+                        <li>@Html.ActionLink("Add new branch","Index","Branches")</li>
+                        <li>@Html.ActionLink("View Bookings","Index","Bookings")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -42,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Chakra's eBic courier app</p>
+            <p>&copy; @DateTime.Now.Year - CourierService</p>
         </footer>
     </div>
 

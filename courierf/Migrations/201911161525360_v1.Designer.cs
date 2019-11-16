@@ -13,7 +13,7 @@ namespace courierf.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201911141606208_v1"; }
+            get { return "201911161525360_v1"; }
         }
         
         string IMigrationMetadata.Source
