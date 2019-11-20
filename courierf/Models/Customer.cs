@@ -17,12 +17,15 @@ namespace courierf.Models
 
         [Key]
         [StringLength(250)]
+        [Display(Name = "Email")]
         public string Customer_id { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Name")]
         public string Customer_name { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Password")]
         public string password { get; set; }
 
         [StringLength(250)]

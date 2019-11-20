@@ -1,4 +1,5 @@
-﻿@model courierf.Models.Customer
+﻿@using Microsoft.AspNet.Identity
+@model courierf.Models.Customer
 
 @{
     ViewBag.Title = "Details";
@@ -37,6 +38,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Customer_id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = User.Identity.GetUserId() }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

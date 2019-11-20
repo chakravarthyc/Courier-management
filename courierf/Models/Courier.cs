@@ -16,6 +16,7 @@ namespace courierf.Models
         public int? Weight { get; set; }
 
         [StringLength(25)]
+        [Display(Name = "Details")]
         public string Courier_type { get; set; }
     }
 }

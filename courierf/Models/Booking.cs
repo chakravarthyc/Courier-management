@@ -13,19 +13,25 @@ namespace courierf.Models
         public int Booking_id { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Sender Address")]
         public string From_add { get; set; }
 
+        [Display(Name = "Price")]
         public long? Amount { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Destination Address")]
         public string Destination { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Branch")]
         public string Branch_code { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Customer ID")]
         public string Customer_id { get; set; }
 
+        [Display(Name = "Distance(km)")]
         public long? Distance { get; set; }
 
         public virtual Branch Branch { get; set; }

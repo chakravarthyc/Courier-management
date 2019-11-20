@@ -18,6 +18,12 @@ namespace courierf
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Customer",
+                url: "{controller}/{action}/{email}/",
+                defaults: new { controller = "Customer", action = "Details", email = UrlParameter.Optional }
+            );
         }
     }
 }

@@ -17,7 +17,7 @@ namespace courierf.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            return View(db.Customers.Where(b => b.Customer_id == User.Identity.Name).ToList());
         }
 
         // GET: Customers/Details/5
@@ -27,7 +27,8 @@ namespace courierf.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            String cid = db.AspNetUsers.Where(b => b.Id == id).FirstOrDefault().Id;
+            Customer customer = db.Customers.Find(cid);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -65,7 +66,8 @@ namespace courierf.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            String cid = db.AspNetUsers.Where(b => b.Id == id).FirstOrDefault().Id;
+            Customer customer = db.Customers.Find(cid);
             if (customer == null)
             {
                 return HttpNotFound();
