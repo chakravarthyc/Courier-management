@@ -51,6 +51,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.booking.Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.booking.Distance)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.courier.Weight)
         </dt>
 
@@ -70,6 +78,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.booking.Booking_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back", "Index")
 </p>

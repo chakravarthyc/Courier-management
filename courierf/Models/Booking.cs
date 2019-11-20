@@ -26,6 +26,8 @@ namespace courierf.Models
         [StringLength(250)]
         public string Customer_id { get; set; }
 
+        public long? Distance { get; set; }
+
         public virtual Branch Branch { get; set; }
 
         public virtual Customer Customer { get; set; }

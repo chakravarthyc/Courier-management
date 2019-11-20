@@ -28,11 +28,12 @@
                     @if (User.IsInRole("Customer"))
                     {
                         <li>@Html.ActionLink("Courier", "BookCourier", "Bookings")</li>
+                        <li>@Html.ActionLink("Previous Orders", "Index", "Bookings")</li>
                     }
                     @if (User.IsInRole("BranchManager"))
                     {
-                        <li>@Html.ActionLink("Add new branch","Index","Branches")</li>
-                        <li>@Html.ActionLink("View Bookings","Index","Bookings")</li>
+                        <li>@Html.ActionLink("Add new branch", "Index", "Branches")</li>
+                        <li>@Html.ActionLink("View Bookings", "Index", "Bookings")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

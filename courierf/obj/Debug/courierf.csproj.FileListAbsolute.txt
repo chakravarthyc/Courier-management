@@ -321,3 +321,4 @@ C:\Users\aniru\Source\Repos\courier-management\courierf\obj\Debug\courierf.pdb
 C:\Users\aniru\Source\Repos\courier-management\courierf\obj\Debug\courierf.csprojAssemblyReference.cache
 C:\Users\aniru\Source\Repos\courier-management\courierf\obj\Debug\courierf.Migrations.v1.resources
 C:\Users\aniru\Source\Repos\courier-management\courierf\obj\Debug\courierf.csproj.GenerateResource.cache
+C:\Users\aniru\Source\Repos\courier-management\courierf\obj\Debug\courierf.Migrations.dist.resources

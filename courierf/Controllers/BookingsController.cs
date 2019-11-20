@@ -18,7 +18,12 @@ namespace courierf.Controllers
         // GET: Bookings
         public ActionResult Index()
         {
-            var bookings = db.Bookings.Include(b => b.Branch).Include(b => b.Customer);
+            IQueryable<Booking> bookings;
+            String id = System.Web.HttpContext.Current.User.Identity.GetUserName();
+            if (User.IsInRole("Customer"))
+                bookings = db.Bookings.Include(b => b.Branch).Include(b => b.Customer).Where(b => b.Customer_id == id);
+            else
+                bookings = db.Bookings.Include(b => b.Branch).Include(b => b.Customer);
             return View(bookings.ToList());
         }
 
@@ -55,7 +60,7 @@ namespace courierf.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Booking_id,From_add,Amount,Destination,Branch_code,Customer_id")] Booking booking)
+        public ActionResult Create([Bind(Include = "Booking_id,From_add,Amount,Destination,Branch_code,Customer_id,Distance")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -145,7 +150,7 @@ namespace courierf.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult BookCourier([Bind(Include = "Booking_id,From_add,Amount,Destination,Branch_code,Customer_id")] Booking booking)
+        public ActionResult BookCourier([Bind(Include = "Booking_id,From_add,Amount,Destination,Branch_code,Customer_id,Distance")] Booking booking)
         {
             booking.Customer_id = System.Web.HttpContext.Current.User.Identity.GetUserName();
             if (ModelState.IsValid)

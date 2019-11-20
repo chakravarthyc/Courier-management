@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Orders</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -47,9 +44,12 @@
             @Html.DisplayFor(modelItem => item.Destination)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Booking_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Booking_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Booking_id })
+            @if (User.IsInRole("BranchManager"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.Booking_id })
+            }
+            &nbsp
+            @Html.ActionLink("Details", "Details", new { id = item.Booking_id })
         </td>
     </tr>
 }
