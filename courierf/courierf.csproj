@@ -178,13 +178,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911161525360_v1.cs" />
-    <Compile Include="Migrations\201911161525360_v1.Designer.cs">
-      <DependentUpon>201911161525360_v1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911201750552_dist.cs" />
-    <Compile Include="Migrations\201911201750552_dist.Designer.cs">
-      <DependentUpon>201911201750552_dist.cs</DependentUpon>
+    <Compile Include="Migrations\201911211704151_v1.cs" />
+    <Compile Include="Migrations\201911211704151_v1.Designer.cs">
+      <DependentUpon>201911211704151_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -208,7 +204,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Cyborg.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -300,11 +295,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911161525360_v1.resx">
-      <DependentUpon>201911161525360_v1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911201750552_dist.resx">
-      <DependentUpon>201911201750552_dist.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911211704151_v1.resx">
+      <DependentUpon>201911211704151_v1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
